@@ -21263,7 +21263,7 @@
 	    window.addEventListener('newScore', function (e) {
 	      _this.setScore(e);
 	    });
-	    _this.getScores(teamNames);
+	    _this.state = getScores(teamNames);
 	    return _this;
 	  }
 
@@ -21273,12 +21273,12 @@
 	      if (typeof window.localStorage.getItem('teamScores') === 'undefined') {
 	        var me = this;
 	        window.localStorage.setItem('teamScores', JSON.stringify(makeTeams(me.teamNames)));
-	        this.state = {
+	        return {
 	          teamNames: teamNames,
 	          teamScores: makeTeams(teamNames)
 	        };
 	      } else {
-	        this.state = {
+	        return {
 	          teamNames: teamNames,
 	          teamScores: JSON.parse(window.localStorage.getItem('teamScores'))
 	        };

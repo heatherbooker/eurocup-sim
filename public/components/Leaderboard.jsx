@@ -17,21 +17,21 @@ class Leaderboard extends React.Component {
     super();
     var teamNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     window.addEventListener('newScore', (e) => {this.setScore(e)});
-    this.getScores(teamNames);
+    this.state = getScores(teamNames);
   }
   getScores(teamNames) {
     if (typeof window.localStorage.getItem('teamScores') === 'undefined') {
       var me = this;
       window.localStorage.setItem('teamScores', JSON.stringify(makeTeams(me.teamNames)));
-      this.state = {
+      return {
         teamNames: teamNames,
         teamScores: makeTeams(teamNames)
-      }
+      };
     } else {
-      this.state = {
+      return {
         teamNames: teamNames,
         teamScores: JSON.parse(window.localStorage.getItem('teamScores'))
-      }
+      };
     }
   }
   setScore(event) {
