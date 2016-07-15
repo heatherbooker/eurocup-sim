@@ -20,9 +20,8 @@ class Leaderboard extends React.Component {
     this.state = this.getScores(teamNames);
   }
   getScores(teamNames) {
-    if (typeof window.localStorage.getItem('teamScores') === 'undefined') {
-      var me = this;
-      window.localStorage.setItem('teamScores', JSON.stringify(makeTeams(me.teamNames)));
+    if (!window.localStorage.getItem('teamScores')) {
+      window.localStorage.setItem('teamScores', JSON.stringify(makeTeams(teamNames)));
       return {
         teamNames: teamNames,
         teamScores: makeTeams(teamNames)
