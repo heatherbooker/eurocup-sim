@@ -17,7 +17,7 @@ class Leaderboard extends React.Component {
     super();
     var teamNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     window.addEventListener('newScore', (e) => {this.setScore(e)});
-    this.state = getScores(teamNames);
+    this.state = this.getScores(teamNames);
   }
   getScores(teamNames) {
     if (typeof window.localStorage.getItem('teamScores') === 'undefined') {

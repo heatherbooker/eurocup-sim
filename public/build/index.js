@@ -21263,7 +21263,7 @@
 	    window.addEventListener('newScore', function (e) {
 	      _this.setScore(e);
 	    });
-	    _this.state = getScores(teamNames);
+	    _this.state = _this.getScores(teamNames);
 	    return _this;
 	  }
 
